@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "ArmataRegular";
+    src: local("Armata-Regular"),
+     url("./assets/fonts/Armata/Armata-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "AsapRegular";
+    src: local("Asap-Regular"),
+     url("./assets/fonts/Asap/static/Asap-Regular.ttf") format("truetype");
+    font-weight: normal;
+}

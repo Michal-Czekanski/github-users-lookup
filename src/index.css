@@ -11,3 +11,8 @@
      url("./assets/fonts/Asap/static/Asap-Regular.ttf") format("truetype");
     font-weight: normal;
 }
+
+body {
+    font-family: 'AsapRegular';
+    margin: 0;
+}

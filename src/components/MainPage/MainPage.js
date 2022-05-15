@@ -4,8 +4,8 @@ import CenterContainer from '../CenterContainer.styled';
 import { ErrorMessage } from '../Message/Message';
 import Navbar from '../Navbar/Navbar';
 import TopContent from '../TopContent/TopContent';
-import UserStatistics from '../UserStatistics/UserStatistics';
 import { WholeContentContainer } from '../WholeContentContainer/WholeContentContainer.styled';
+import WholeFetchedData from '../WholeFetchedData/WholeFetchedData';
 
 class MainPage extends React.Component {
   constructor (props) {
@@ -14,6 +14,9 @@ class MainPage extends React.Component {
       user: undefined,
       userNotFoundError: false
     };
+
+    // FOR DEV
+    this.state.user = getUserData('Michal-Czekanski');
   }
 
   /**
@@ -47,11 +50,7 @@ class MainPage extends React.Component {
           username={this.state.user.username}
         />;
     } else if (this.state.user) {
-      mainContent = (
-        <UserStatistics
-          user={this.state.user}
-        />
-      );
+      mainContent = <WholeFetchedData user={this.state.user}/>;
     }
 
     return (

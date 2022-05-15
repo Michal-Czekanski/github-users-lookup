@@ -12,12 +12,12 @@
     font-weight: normal;
 }
 
+html, body, #root {
+    height: 100%;
+    background-color: #303030;
+}
+
 body {
     font-family: 'AsapRegular';
     margin: 0;
-    height: 100vh;
-}
-
-#root {
-    height: 100%;
 }

@@ -10,3 +10,7 @@ export const USER_STATS = {
   comments: 'Comments in repos',
   watchers: 'All watchers'
 };
+
+export const REPOSITORY_DETAILS = {
+  commits: 'Commits:'
+};

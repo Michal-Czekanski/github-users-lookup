@@ -8,19 +8,25 @@ class Search extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      username: undefined
+      username: undefined,
+      userNotFoundError: false
     };
   }
 
   handleChange = (e) => {
-    this.setState({ username: e.target.value });
+    this.setState({ username: e.target.value, userNotFoundError: false });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
     if (this.state.username) {
-      this.props.searchUser(this.state.username);
+      const userFound = this.props.searchUserHandler(this.state.username);
+      if (userFound) {
+        this.setState({ userNotFoundError: false });
+      } else {
+        this.setState({ userNotFoundError: true });
+      }
     }
   };
 
@@ -34,6 +40,7 @@ class Search extends React.Component {
           <Input
             placeholder={INPUT_PLACEHOLDER}
             onChange={this.handleChange}
+            error={this.state.userNotFoundError}
           />
           </SearchForm>
         </Container>
@@ -43,7 +50,7 @@ class Search extends React.Component {
   }
 
   static propTypes = {
-    searchUser: PropTypes.func
+    searchUserHandler: PropTypes.func
   };
 }
 

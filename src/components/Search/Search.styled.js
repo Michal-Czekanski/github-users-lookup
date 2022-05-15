@@ -33,7 +33,7 @@ export const Input = styled.input`
   
   /* font */
   font-size: 1.3em;
-  color: ${COLORS.bright};
+  color: ${props => props.error ? COLORS.error : COLORS.bright};
 
   /* style */
   background: none;

@@ -9,6 +9,7 @@ import watchersIcon from '../../assets/icons/32/eye-primary-light.svg';
 import DropdownButton from '../DropdownButton/DropdownButton';
 import { StatisticPrimary } from '../Statistic/Statistic';
 import { REPOSITORY_DETAILS } from '../../assets/strings';
+import Repo from '../../models/Repo';
 
 class RepositoryInformation extends React.Component {
   constructor (props) {
@@ -18,10 +19,19 @@ class RepositoryInformation extends React.Component {
     };
   }
 
+  updateRepoDetails = async () => {
+    try {
+      await this.props.repo.fillMissingDetailsData();
+      this.setState((prevState) => {
+        return { expanded: !prevState.expanded };
+      });
+    } catch (error) {
+      this.props.errorHandler(error);
+    }
+  };
+
   expandDetails = () => {
-    this.setState((prevState) => {
-      return { expanded: !prevState.expanded };
-    });
+    this.updateRepoDetails();
   };
 
   render () {
@@ -75,15 +85,8 @@ class RepositoryInformation extends React.Component {
   }
 
   static propTypes = {
-    repo: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      commits: PropTypes.string.isRequired,
-      stars: PropTypes.string.isRequired,
-      forks: PropTypes.string.isRequired,
-      comments: PropTypes.string.isRequired,
-      watchers: PropTypes.string.isRequired
-    }).isRequired
+    repo: PropTypes.instanceOf(Repo).isRequired,
+    errorHandler: PropTypes.func.isRequired
   };
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './Repositories.styled';
 import RepositoryInformation from '../RepositoryInformation/RepositoryInformation';
+import Repo from '../../models/Repo';
 
 class Repositories extends React.Component {
   render () {
@@ -14,6 +15,7 @@ class Repositories extends React.Component {
               <RepositoryInformation
                 key={repo.name}
                 repo={repo}
+                errorHandler={this.props.errorHandler}
               />
             );
           }
@@ -23,7 +25,10 @@ class Repositories extends React.Component {
   }
 
   static propTypes = {
-    repos: PropTypes.arrayOf(PropTypes.object)
+    repos: PropTypes.arrayOf(
+      PropTypes.instanceOf(Repo)
+    ).isRequired,
+    errorHandler: PropTypes.func.isRequired
   };
 }
 

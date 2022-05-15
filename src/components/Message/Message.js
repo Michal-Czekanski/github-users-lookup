@@ -35,12 +35,12 @@ export function HelpMessage (props) {
 export function ErrorMessage (props) {
   return (
     <Message
-      text={`User "${props.username}" found.`}
+      text={props.message}
       icon={errorIcon}
       color={COLORS.error} />
   );
 }
 
 ErrorMessage.propTypes = {
-  username: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired
 };
